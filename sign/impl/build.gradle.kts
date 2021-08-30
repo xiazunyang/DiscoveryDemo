@@ -34,7 +34,7 @@ android {
 dependencies {
     api(project(":sign:api"))
     api(project(":common:android"))
-    kapt("cn.numeron:discovery.apt:1.2.1")
+    kapt("cn.numeron:discovery.apt:1.2.2")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

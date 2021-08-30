@@ -6,9 +6,9 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("cn.numeron:discovery.plugin:1.2.1")
+        classpath("cn.numeron:discovery.plugin:1.2.2")
         classpath("com.android.tools.build:gradle:7.0.1")
-        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.21-1.0.0-beta07")
+        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.30-1.0.0-beta08")
     }
 }
 
