@@ -2,19 +2,21 @@
 buildscript {
     repositories {
         google()
+        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
     }
     dependencies {
-        classpath("cn.numeron:discovery.plugin:1.2.2")
-        classpath("com.android.tools.build:gradle:7.0.1")
-        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.30-1.0.0-beta08")
+        classpath("cn.numeron:discovery.plugin:1.2.3")
+        classpath("com.android.tools.build:gradle:7.0.2")
+        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.30-1.0.0-beta09")
     }
 }
 
 subprojects {
     repositories {
         google()
+        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
     }

@@ -33,8 +33,7 @@ android {
 
 dependencies {
     api(project(":common:android"))
-    ksp("cn.numeron:discovery.ksp:1.2.2")
-    api("cn.numeron:discovery.library:1.2.2")
+    api("cn.numeron:discovery.library:1.2.3")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")

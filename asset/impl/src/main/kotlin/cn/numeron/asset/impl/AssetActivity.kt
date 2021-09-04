@@ -1,9 +1,11 @@
 package cn.numeron.asset.impl
 
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import cn.numeron.discovery.Discoveries
 
 class AssetActivity : AppCompatActivity() {
 

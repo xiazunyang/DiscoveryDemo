@@ -1,0 +1,189 @@
+Index: build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    repositories {\r\n        google()\r\n        mavenLocal()\r\n        mavenCentral()\r\n        gradlePluginPortal()\r\n        maven(\"https://maven.aliyun.com/repository/google\")\r\n        maven(\"https://maven.aliyun.com/repository/central\")\r\n        maven(\"https://maven.aliyun.com/repository/jcenter\")\r\n    }\r\n    dependencies {\r\n        classpath(\"cn.numeron:discovery.kcp:1.3.0\")\r\n        classpath(\"com.android.tools.build:gradle:7.0.1\")\r\n        classpath(\"com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.21-1.0.0-beta07\")\r\n    }\r\n}\r\n\r\nsubprojects {\r\n    repositories {\r\n        google()\r\n        mavenLocal()\r\n        mavenCentral()\r\n        gradlePluginPortal()\r\n        maven(\"https://maven.aliyun.com/repository/google\")\r\n        maven(\"https://maven.aliyun.com/repository/central\")\r\n        maven(\"https://maven.aliyun.com/repository/jcenter\")\r\n    }\r\n}\r\n\r\ntasks.register<Delete>(\"clean\") {\r\n    delete(rootProject.buildDir)\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle.kts b/build.gradle.kts
+--- a/build.gradle.kts	(revision 0be08283b1c82a6cb99bf5aa81f33472daf30bb8)
++++ b/build.gradle.kts	(date 1630678944194)
+@@ -5,14 +5,11 @@
+         mavenLocal()
+         mavenCentral()
+         gradlePluginPortal()
+-        maven("https://maven.aliyun.com/repository/google")
+-        maven("https://maven.aliyun.com/repository/central")
+-        maven("https://maven.aliyun.com/repository/jcenter")
+     }
+     dependencies {
+-        classpath("cn.numeron:discovery.kcp:1.3.0")
++        classpath("cn.numeron:discovery.plugin:1.2.3")
+         classpath("com.android.tools.build:gradle:7.0.1")
+-        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.21-1.0.0-beta07")
++        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.30-1.0.0-beta08")
+     }
+ }
+ 
+@@ -22,9 +19,6 @@
+         mavenLocal()
+         mavenCentral()
+         gradlePluginPortal()
+-        maven("https://maven.aliyun.com/repository/google")
+-        maven("https://maven.aliyun.com/repository/central")
+-        maven("https://maven.aliyun.com/repository/jcenter")
+     }
+ }
+ 
+Index: asset/api/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id(\"com.android.library\")\r\n    id(\"kotlin-android\")\r\n    id(\"com.google.devtools.ksp\")\r\n}\r\n\r\nandroid {\r\n    compileSdk = 30\r\n\r\n    defaultConfig {\r\n        minSdk = 21\r\n        targetSdk = 30\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        val release by getting {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n}\r\n\r\ndependencies {\r\n    api(project(\":common:android\"))\r\n    ksp(\"cn.numeron:discovery.ksp:1.3.0\")\r\n    api(\"cn.numeron:discovery.library:1.3.0\")\r\n    testImplementation(\"junit:junit:4.13.2\")\r\n    androidTestImplementation(\"androidx.test.ext:junit:1.1.3\")\r\n    androidTestImplementation(\"androidx.test.espresso:espresso-core:3.4.0\")\r\n}\r\n\r\nksp {\r\n    arg(\"projectName\", \"asset-api\")\r\n    arg(\"rootProjectBuildDir\", rootProject.buildDir.absolutePath)\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/asset/api/build.gradle.kts b/asset/api/build.gradle.kts
+--- a/asset/api/build.gradle.kts	(revision 0be08283b1c82a6cb99bf5aa81f33472daf30bb8)
++++ b/asset/api/build.gradle.kts	(date 1630678435585)
+@@ -33,14 +33,13 @@
+ 
+ dependencies {
+     api(project(":common:android"))
+-    ksp("cn.numeron:discovery.ksp:1.3.0")
+-    api("cn.numeron:discovery.library:1.3.0")
++    ksp("cn.numeron:discovery.ksp:1.2.3")
++    api("cn.numeron:discovery.library:1.2.3")
+     testImplementation("junit:junit:4.13.2")
+     androidTestImplementation("androidx.test.ext:junit:1.1.3")
+     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+ }
+ 
+ ksp {
+-    arg("projectName", "asset-api")
+     arg("rootProjectBuildDir", rootProject.buildDir.absolutePath)
+ }
+Index: common/android/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id(\"com.android.library\")\r\n    id(\"kotlin-android\")\r\n    id(\"com.google.devtools.ksp\")\r\n}\r\n\r\nandroid {\r\n    compileSdk = 30\r\n\r\n    defaultConfig {\r\n        minSdk = 21\r\n        targetSdk = 30\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        val release by getting {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n}\r\n\r\ndependencies {\r\n    api(project(\":common:java\"))\r\n    ksp(\"cn.numeron:discovery.ksp:1.3.0\")\r\n    api(\"androidx.core:core-ktx:1.6.0\")\r\n    api(\"cn.numeron:discovery.library:1.3.0\")\r\n    api(\"androidx.appcompat:appcompat:1.3.1\")\r\n    api(\"com.google.android.material:material:1.4.0\")\r\n    api(\"androidx.lifecycle:lifecycle-runtime-ktx:2.3.1\")\r\n    api(\"androidx.constraintlayout:constraintlayout:2.1.0\")\r\n    api(\"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0\")\r\n\r\n    testImplementation(\"junit:junit:4.+\")\r\n    androidTestImplementation(\"androidx.test.ext:junit:1.1.3\")\r\n    androidTestImplementation(\"androidx.test.espresso:espresso-core:3.4.0\")\r\n}\r\n\r\nksp {\r\n    arg(\"projectName\", \"common-android\")\r\n    arg(\"rootProjectBuildDir\", rootProject.buildDir.absolutePath)\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/common/android/build.gradle.kts b/common/android/build.gradle.kts
+--- a/common/android/build.gradle.kts	(revision 0be08283b1c82a6cb99bf5aa81f33472daf30bb8)
++++ b/common/android/build.gradle.kts	(date 1630678435566)
+@@ -33,9 +33,9 @@
+ 
+ dependencies {
+     api(project(":common:java"))
+-    ksp("cn.numeron:discovery.ksp:1.3.0")
++    ksp("cn.numeron:discovery.ksp:1.2.3")
+     api("androidx.core:core-ktx:1.6.0")
+-    api("cn.numeron:discovery.library:1.3.0")
++    api("cn.numeron:discovery.library:1.2.3")
+     api("androidx.appcompat:appcompat:1.3.1")
+     api("com.google.android.material:material:1.4.0")
+     api("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
+@@ -48,6 +48,5 @@
+ }
+ 
+ ksp {
+-    arg("projectName", "common-android")
+     arg("rootProjectBuildDir", rootProject.buildDir.absolutePath)
+ }
+Index: sign/impl/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id(\"com.android.library\")\r\n    id(\"kotlin-android\")\r\n    id(\"kotlin-kapt\")\r\n}\r\n\r\nandroid {\r\n    compileSdk = 30\r\n\r\n    defaultConfig {\r\n        minSdk = 21\r\n        targetSdk = 30\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        val release by getting {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n}\r\n\r\ndependencies {\r\n    api(project(\":sign:api\"))\r\n    api(project(\":common:android\"))\r\n    kapt(\"cn.numeron:discovery.apt:1.3.0\")\r\n\r\n    testImplementation(\"junit:junit:4.13.2\")\r\n    androidTestImplementation(\"androidx.test.ext:junit:1.1.3\")\r\n    androidTestImplementation(\"androidx.test.espresso:espresso-core:3.4.0\")\r\n}\r\n\r\nkapt {\r\n    arguments {\r\n        //设置此模块的唯一标识和编译根目录\r\n        arg(\"projectName\", \"sign-impl\")\r\n        arg(\"rootProjectBuildDir\", rootProject.buildDir.absolutePath)\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/sign/impl/build.gradle.kts b/sign/impl/build.gradle.kts
+--- a/sign/impl/build.gradle.kts	(revision 0be08283b1c82a6cb99bf5aa81f33472daf30bb8)
++++ b/sign/impl/build.gradle.kts	(date 1630678435507)
+@@ -34,7 +34,7 @@
+ dependencies {
+     api(project(":sign:api"))
+     api(project(":common:android"))
+-    kapt("cn.numeron:discovery.apt:1.3.0")
++    kapt("cn.numeron:discovery.apt:1.2.3")
+ 
+     testImplementation("junit:junit:4.13.2")
+     androidTestImplementation("androidx.test.ext:junit:1.1.3")
+@@ -43,8 +43,7 @@
+ 
+ kapt {
+     arguments {
+-        //设置此模块的唯一标识和编译根目录
+-        arg("projectName", "sign-impl")
++        //设置编译根目录
+         arg("rootProjectBuildDir", rootProject.buildDir.absolutePath)
+     }
+ }
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1629424458987)
++++ b/.idea/.gitignore	(date 1629424458987)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: asset/impl/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id(\"com.android.library\")\r\n    id(\"kotlin-android\")\r\n    id(\"com.google.devtools.ksp\")\r\n}\r\n\r\nandroid {\r\n    compileSdk = 30\r\n\r\n    defaultConfig {\r\n        minSdk = 21\r\n        targetSdk = 30\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        val release by getting {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n}\r\n\r\ndependencies {\r\n    api(project(\":sign:api\"))\r\n    api(project(\":asset:api\"))\r\n    api(project(\":common:android\"))\r\n\r\n    ksp(\"cn.numeron:discovery.ksp:1.3.0\")\r\n    testImplementation(\"junit:junit:4.13.2\")\r\n    androidTestImplementation(\"androidx.test.ext:junit:1.1.3\")\r\n    androidTestImplementation(\"androidx.test.espresso:espresso-core:3.4.0\")\r\n}\r\n\r\nksp {\r\n    arg(\"projectName\", \"asset-impl\")\r\n    arg(\"rootProjectBuildDir\", rootProject.buildDir.absolutePath)\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/asset/impl/build.gradle.kts b/asset/impl/build.gradle.kts
+--- a/asset/impl/build.gradle.kts	(revision 0be08283b1c82a6cb99bf5aa81f33472daf30bb8)
++++ b/asset/impl/build.gradle.kts	(date 1630678435606)
+@@ -36,13 +36,12 @@
+     api(project(":asset:api"))
+     api(project(":common:android"))
+ 
+-    ksp("cn.numeron:discovery.ksp:1.3.0")
++    ksp("cn.numeron:discovery.ksp:1.2.3")
+     testImplementation("junit:junit:4.13.2")
+     androidTestImplementation("androidx.test.ext:junit:1.1.3")
+     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+ }
+ 
+ ksp {
+-    arg("projectName", "asset-impl")
+     arg("rootProjectBuildDir", rootProject.buildDir.absolutePath)
+ }
+\ No newline at end of file
+Index: sign/api/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id(\"com.android.library\")\r\n    id(\"kotlin-android\")\r\n    id(\"com.google.devtools.ksp\")\r\n}\r\n\r\nandroid {\r\n    compileSdk = 30\r\n\r\n    defaultConfig {\r\n        minSdk = 21\r\n        targetSdk = 30\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        val release by getting {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n}\r\n\r\ndependencies {\r\n    api(project(\":common:android\"))\r\n    ksp(\"cn.numeron:discovery.ksp:1.3.0\")\r\n    api(\"cn.numeron:discovery.library:1.3.0\")\r\n    testImplementation(\"junit:junit:4.+\")\r\n    androidTestImplementation(\"androidx.test.ext:junit:1.1.3\")\r\n    androidTestImplementation(\"androidx.test.espresso:espresso-core:3.4.0\")\r\n}\r\n\r\nksp {\r\n    arg(\"projectName\", \"sign-api\")\r\n    arg(\"rootProjectBuildDir\", rootProject.buildDir.absolutePath)\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/sign/api/build.gradle.kts b/sign/api/build.gradle.kts
+--- a/sign/api/build.gradle.kts	(revision 0be08283b1c82a6cb99bf5aa81f33472daf30bb8)
++++ b/sign/api/build.gradle.kts	(date 1630678435534)
+@@ -33,14 +33,13 @@
+ 
+ dependencies {
+     api(project(":common:android"))
+-    ksp("cn.numeron:discovery.ksp:1.3.0")
+-    api("cn.numeron:discovery.library:1.3.0")
++    ksp("cn.numeron:discovery.ksp:1.2.3")
++    api("cn.numeron:discovery.library:1.2.3")
+     testImplementation("junit:junit:4.+")
+     androidTestImplementation("androidx.test.ext:junit:1.1.3")
+     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+ }
+ 
+ ksp {
+-    arg("projectName", "sign-api")
+     arg("rootProjectBuildDir", rootProject.buildDir.absolutePath)
+ }
