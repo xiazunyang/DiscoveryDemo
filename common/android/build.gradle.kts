@@ -33,9 +33,8 @@ android {
 
 dependencies {
     api(project(":common:java"))
-    ksp("cn.numeron:discovery.ksp:1.2.2")
     api("androidx.core:core-ktx:1.6.0")
-    api("cn.numeron:discovery.library:1.2.2")
+    api("cn.numeron:discovery.library:1.3.1")
     api("androidx.appcompat:appcompat:1.3.1")
     api("com.google.android.material:material:1.4.0")
     api("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
