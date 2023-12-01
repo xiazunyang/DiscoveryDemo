@@ -1,27 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    repositories {
-        google()
-        mavenLocal()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath("cn.numeron:discovery.plugin:1.3.1")
-        classpath("com.android.tools.build:gradle:7.0.2")
-        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.30-1.0.0-beta09")
-    }
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+plugins {
+    alias(libs.plugins.com.android.library) apply false
+    alias(libs.plugins.com.android.application) apply false
+    alias(libs.plugins.org.jetbrains.kotlin.android) apply false
 }
-
-subprojects {
-    repositories {
-        google()
-        mavenLocal()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-
-tasks.register<Delete>("clean") {
-    delete(rootProject.buildDir)
-}
+true // Needed to make the Suppress annotation work for the plugins block

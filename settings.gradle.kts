@@ -1,19 +1,29 @@
-/*dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+pluginManagement {
     repositories {
         google()
         mavenLocal()
         mavenCentral()
         gradlePluginPortal()
-        maven("https://maven.aliyun.com/repository/google")
-        maven("https://maven.aliyun.com/repository/central")
-        maven("https://maven.aliyun.com/repository/jcenter")
     }
-}*/
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenLocal()
+        mavenCentral()
+    }
+}
 
 rootProject.name = "DiscoveryDemo"
 
-include(":app")
-include(":sign", ":sign:api", ":sign:impl")
-include(":asset", ":asset:api", ":asset:impl")
-include(":common", ":common:java", ":common:android")
+include(
+    ":app",
+    ":asset:api",
+    ":asset:impl",
+    ":common:android",
+    ":common:java",
+    ":sign:api",
+    ":sign:impl"
+)

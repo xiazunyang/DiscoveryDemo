@@ -7,10 +7,9 @@ plugins {
 group = "cn.numeron"
 version = "0.0.1"
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "1.8"
+kotlin {
+    compilerOptions {
+        version = JavaVersion.VERSION_11
     }
 }
 
